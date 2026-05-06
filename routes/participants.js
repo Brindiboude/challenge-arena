@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 const router = express.Router();
 
-// __dirname n'existe pas en ES module donc on va le réecrer #S 
+// __dirname n'existe pas en ES module donc on va le réecrer #S
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -34,17 +34,17 @@ router.post('/', (req, res) => {
         }
 
         const participants = lireParticipants();
-	
+
         // on va creer le participant avec son id unique et ses 0 points #S
         const nouveauParticipant = {
             id: Date.now(),
             nom: nom,
             points: 0
         };
-	
+
         participants.push(nouveauParticipant);
         sauvegarderParticipants(participants);
-	
+
         return res.status(201).json(nouveauParticipant);
     } catch (err) {
         // si le serveur plante #S
@@ -56,10 +56,10 @@ router.post('/', (req, res) => {
 router.get('/classement', (req, res) => {
     try {
         const participants = lireParticipants();
-	
+
         // on trie du plus grand au plus petit nombre de points #L
         const classement = participants.sort((a, b) => b.points - a.points);
-	
+
         return res.status(200).json(classement);
     } catch (err) {
         // si le serveur plante #L
