@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/participants', participantsRoutes);
 app.use('/defis', defisRoutes);
 
-const PORT = 3000;
+const PORT = 3001;
 
 // on demarre le serveur #S
 app.listen(PORT, () => {
